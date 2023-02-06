@@ -1,3 +1,20 @@
+let recipes = [
+  {
+    title: "Lasagna",
+    ingredients: ["noodles", "sauce", "cheese", "sausage"],
+    instructions: ["Cook the noodles", "Layer everything", "Bake that sucker"],
+  },
+  {
+    title: "Carbonara",
+    ingredients: ["noodles", "egg yolks", "bacon", "parmesan cheese"],
+    instructions: [
+      "Cook the noodles and the bacon",
+      "Mix the yolks and the parmesan",
+      "Stir all ingredients together",
+    ],
+  },
+];
+
 let cards = document.getElementById("cards");
 
 const createCard = function (dish, ingredients, instructions) {
@@ -23,11 +40,16 @@ const createCard = function (dish, ingredients, instructions) {
   }
   newCard.append(instructionList);
 
+  newCard.classList.add("card");
+
   cards.append(newCard);
 };
 
-createCard(
-  "Lasagna",
-  ["noodles", "sauce", "cheese", "sausage"],
-  ["Cook the noodles", "Layer everything", "Bake that sucker"]
-);
+for (let recipe of recipes) {
+  createCard(recipe.title, recipe.ingredients, recipe.instructions);
+}
+// createCard(
+//   "Lasagna",
+//   ["noodles", "sauce", "cheese", "sausage"],
+//   ["Cook the noodles", "Layer everything", "Bake that sucker"]
+// );
