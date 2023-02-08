@@ -15,9 +15,25 @@ let recipes = [
   },
 ];
 
-let cards = document.getElementById("cards");
+const cards = document.getElementById("cards");
+
+const addRecipe = function () {
+  let newRecipe = {
+    title: "PBJ",
+    ingredients: ["bread", "peanut butter", "jelly"],
+    instructions: ["slap all that shit together", "enjoy!"],
+  };
+  recipes.push(newRecipe);
+  createCards(recipes);
+};
+
+const addRecipeButton = document.getElementById("addRecipe");
+
+addRecipeButton.addEventListener("click", addRecipe);
 
 const createCards = function (recipes) {
+  cards.replaceChildren();
+
   for (let recipe of recipes) {
     let newCard = document.createElement("div");
 
@@ -48,35 +64,3 @@ const createCards = function (recipes) {
 };
 
 createCards(recipes);
-
-// const createCard = function (dish, ingredients, instructions) {
-//   let newCard = document.createElement("div");
-
-//   let recipeTitle = document.createElement("h3");
-//   recipeTitle.textContent = dish;
-//   newCard.append(recipeTitle);
-
-//   let ingredientList = document.createElement("ul");
-//   for (let ingredient of ingredients) {
-//     let newIngredient = document.createElement("li");
-//     newIngredient.textContent = ingredient;
-//     ingredientList.append(newIngredient);
-//   }
-//   newCard.append(ingredientList);
-
-//   let instructionList = document.createElement("ol");
-//   for (let step of instructions) {
-//     let newStep = document.createElement("li");
-//     newStep.textContent = step;
-//     instructionList.append(newStep);
-//   }
-//   newCard.append(instructionList);
-
-//   newCard.classList.add("card");
-
-//   cards.append(newCard);
-// };
-
-// for (let recipe of recipes) {
-//   createCard(recipe.title, recipe.ingredients, recipe.instructions);
-// }
